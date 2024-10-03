@@ -1,1 +1,39 @@
-<p>home works!</p>
+<div class="container">
+    <h1>Welcome to My Blog</h1>
+  
+    <h2>Featured Blogs</h2>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let blog of featuredBlogs">
+        <div class="card">
+          <img src="{{ blog.banner }}" alt="Blog Banner" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <p class="card-text">{{ blog.description | slice:0:100 }}...</p>
+            <a href="/blog/{{ blog.id }}" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <h2>Categories</h2>
+    <div class="category-buttons">
+      <button
+        *ngFor="let category of categories"
+        (click)="selectCategory(category)"
+        class="btn btn-secondary m-1"
+      >
+        {{ category }}
+      </button>
+    </div>
+  
+    <div class="subscription-box mt-5">
+      <h3>Subscribe for Updates</h3>
+      <form>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Enter your email" />
+        </div>
+        <button type="submit" class="btn btn-success">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  
