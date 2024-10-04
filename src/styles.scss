@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+    padding: 20px;
+  
+    .blog-card {
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      transition: transform 0.2s ease-in-out;
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+  
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+  
+      .card-body {
+        padding: 15px;
+  
+        .card-title {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 10px;
+          color: #333;
+        }
+  
+        .card-text {
+          font-size: 1rem;
+          color: #555;
+          margin-bottom: 20px;
+        }
+  
+        .btn {
+          background-color: #007bff;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+    }
+  }
+  

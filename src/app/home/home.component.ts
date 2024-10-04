@@ -1,34 +1,34 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-home',
-//   standalone: true,
-//   imports: [],
-//   templateUrl: './home.component.html',
-//   styleUrl: './home.component.scss'
-// })
-// export class HomeComponent {
-
-// }
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']  // You can add styling later
+  styleUrls: ['./home.component.scss'],
+  standalone: true,
+  imports: [HttpClientModule, CommonModule],
 })
 export class HomeComponent implements OnInit {
-  featuredBlogs = [];  // Placeholder for featured blogs
-  categories = ['Technology', 'Finance', 'Business', 'Investment'];  // Placeholder categories
+  blogs: any[] = [];
+  categories: string[] = ['Technology', 'Health', 'Lifestyle', 'Finance']; // Sample categories
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    // Fetch featured blogs from service here (to be added later)
+  onSubscribe() {
+    // Logic for subscription form submission
+    alert('You have subscribed successfully!');
   }
 
-  selectCategory(category: string) {
-    console.log('Category selected:', category);
-    // Fetch blogs by category (to be implemented)
+
+  filterBlogsByCategory(category: string) {
+    // Filter logic here
+    this.blogs = this.blogs.filter(blog => blog.category === category);
+  }
+
+  ngOnInit(): void {
+    this.http.get<any[]>('http://localhost:3000/blogs').subscribe((data) => {
+      this.blogs = data;
+    });
   }
 }
