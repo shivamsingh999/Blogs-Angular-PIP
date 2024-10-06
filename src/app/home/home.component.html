@@ -1,39 +1,142 @@
-<div class="container">
-    <h1>Welcome to My Blog</h1>
-  
-    <h2>Featured Blogs</h2>
+<!-- <div class="container mt-4">
     <div class="row">
-      <div class="col-md-4" *ngFor="let blog of featuredBlogs">
-        <div class="card">
-          <img src="{{ blog.banner }}" alt="Blog Banner" class="card-img-top" />
-          <div class="card-body">
-            <h5 class="card-title">{{ blog.title }}</h5>
-            <p class="card-text">{{ blog.description | slice:0:100 }}...</p>
-            <a href="/blog/{{ blog.id }}" class="btn btn-primary">Read More</a>
+       Featured Blogs Section 
+      <div class="col-12 mb-4">
+        <h2>Featured Blogs</h2>
+        <div class="row">
+          <div class="col-md-4" *ngFor="let blog of blogs">
+            <div class="card h-100 shadow-sm">
+              <img [src]="blog.banner" class="card-img-top" alt="Blog Image">
+              <div class="card-body">
+                <h5 class="card-title">{{ blog.title }}</h5>
+                <p class="card-text">{{ blog.description }}...</p>
+                <a class="btn btn-primary">Read More</a>
+                 <a [routerLink]="['/blog', blog.id]" class="btn btn-primary">Read More</a> 
+
+            </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  
-    <h2>Categories</h2>
-    <div class="category-buttons">
-      <button
-        *ngFor="let category of categories"
-        (click)="selectCategory(category)"
-        class="btn btn-secondary m-1"
-      >
-        {{ category }}
-      </button>
-    </div>
-  
-    <div class="subscription-box mt-5">
-      <h3>Subscribe for Updates</h3>
-      <form>
-        <div class="form-group">
-          <input type="email" class="form-control" placeholder="Enter your email" />
+      <div class="container">
+        <div class="row">
+           Blog Card 
+          <div class="col-md-4" *ngFor="let blog of blogs">
+            <div class="card blog-card">
+              <img class="card-img-top" [src]="blog.banner || 'assets/sample-blog-image.jpg'" alt="Blog Image">
+              <div class="card-body">
+                <h5 class="card-title">{{ blog.title || 'Sample Blog Title' }}</h5>
+                <p class="card-text">
+                  {{ blog.description || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }}
+                </p>
+                <a class="btn btn-primary">Read More</a>
+                <a [routerLink]="['/blog', blog.id]" class="btn btn-primary">Read More</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <button type="submit" class="btn btn-success">Subscribe</button>
-      </form>
+      </div>
+  
+     
+    </div>
+  </div> -->
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">My Blog</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>Welcome to My Blog</h1>
+      <p>Sharing my thoughts and experiences with the world</p>
+      <button class="btn btn-light" [routerLink]="['/add-blog']">Get Started</button>
+    </div>
+  </section>
+
+   <!-- Categories Section -->
+   <div class="col-12 mb-4">
+    <h3>Categories</h3>
+    <div class="d-flex flex-wrap">
+      <div *ngFor="let category of categories" class="p-2">
+        <button class="btn btn-outline-dark" (click)="filterBlogsByCategory(category)">
+          {{ category }}
+        </button>
+      </div>
     </div>
   </div>
-  
+
+  <!-- Subscription Box -->
+  <div class="col-12 mb-4">
+    <h4>Subscribe for Updates</h4>
+    <form (ngSubmit)="onSubscribe()">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email"  name="email" placeholder="Enter your email">          </div>
+
+        <!-- <input type="email" class="form-control" id="email" [(ngModel)]="subscriberEmail" name="email" placeholder="Enter your email">          </div> -->
+      <button type="submit" class="btn btn-primary mt-2">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- Blog Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">Latest Posts</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="blog-card">
+            <img src="https://via.placeholder.com/350x200" alt="Blog Image">
+            <div class="p-4">
+              <h5 class="mb-3">Blog Post Title</h5>
+              <p class="text-muted">A short description of the blog post...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="blog-card">
+            <img src="https://via.placeholder.com/350x200" alt="Blog Image">
+            <div class="p-4">
+              <h5 class="mb-3">Blog Post Title</h5>
+              <p class="text-muted">A short description of the blog post...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="blog-card">
+            <img src="https://via.placeholder.com/350x200" alt="Blog Image">
+            <div class="p-4">
+              <h5 class="mb-3">Blog Post Title</h5>
+              <p class="text-muted">A short description of the blog post...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let blog of blogs">
+          <div class="card blog-card">
+            <img class="card-img-top" [src]="blog.image" alt="Blog Image">
+            <div class="card-body">
+              <h5 class="card-title">{{ blog.title }}</h5>
+              <p class="card-text">{{ blog.description }}</p>
+              <a [routerLink]="['/blog', blog.id]" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 My Blog. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+

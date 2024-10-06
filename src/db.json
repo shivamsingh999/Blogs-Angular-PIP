@@ -1,0 +1,21 @@
+{
+    "blogs": [
+      {
+        "id": 1,
+        "title": "The Journey of Angular",
+        "description": "Learn the ins and outs of Angular, a powerful framework for building web applications.",
+        "image": "https://via.placeholder.com/300x200",
+        "author": "John Doe",
+        "createdDate": "2024-09-22"
+      },
+      {
+        "id": 2,
+        "title": "Why SCSS is the Future",
+        "description": "Discover why SCSS is transforming the way developers write styles.",
+        "image": "https://via.placeholder.com/300x200",
+        "author": "Jane Smith",
+        "createdDate": "2024-09-20"
+      }
+    ]
+  }
+  
