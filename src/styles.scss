@@ -1,50 +1,62 @@
-.container {
-    padding: 20px;
-  
-    .blog-card {
-      border: none;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-      transition: transform 0.2s ease-in-out;
-  
-      &:hover {
-        transform: translateY(-5px);
-      }
-  
-      .card-img-top {
-        height: 200px;
-        object-fit: cover;
-      }
-  
-      .card-body {
-        padding: 15px;
-  
-        .card-title {
-          font-family: 'Montserrat', sans-serif;
-          font-size: 1.5rem;
-          font-weight: bold;
-          margin-bottom: 10px;
-          color: #333;
-        }
-  
-        .card-text {
-          font-size: 1rem;
-          color: #555;
-          margin-bottom: 20px;
-        }
-  
-        .btn {
-          background-color: #007bff;
-          color: #fff;
-          padding: 10px 20px;
-          border: none;
-          transition: background-color 0.3s;
-  
-          &:hover {
-            background-color: #0056b3;
-          }
-        }
-      }
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f8f9fa;
     }
-  }
-  
+
+    .navbar {
+        background-color: #343a40;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        color: #fff;
+    }
+
+    .hero-section {
+        background: url('https://via.placeholder.com/1920x1080') no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+    }
+
+    .hero-section h1 {
+        font-size: 4rem;
+        font-weight: 700;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .blog-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .blog-card {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .footer {
+        background-color: #343a40;
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+    }
+
+ 

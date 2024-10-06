@@ -8,12 +8,14 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { HomeComponent } from './home/home.component';
 import { ManageBlogsComponent } from './manage-blogs/manage-blogs.component';
 import { MyBlogsComponent } from './my-blogs/my-blogs.component';
+import { AddBlogComponent } from './add-blog/add-blog.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'my-blogs', component: MyBlogsComponent, canActivate: [AuthGuard] },
-  { path: 'add-blog', component: ManageBlogsComponent, canActivate: [AuthGuard] },
+  // { path: 'add-blog', component: ManageBlogsComponent, canActivate: [AuthGuard] },
+  { path: 'add-blog', component: AddBlogComponent },
   { path: 'blog/:id', component: BlogDetailComponent },
   { path: '**', redirectTo: '' },
 ];

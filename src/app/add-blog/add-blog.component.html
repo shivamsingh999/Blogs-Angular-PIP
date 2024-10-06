@@ -1,0 +1,48 @@
+<div class="add-blog-container">
+  <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" formControlName="title" class="form-control" type="text" placeholder="Enter blog title" />
+    </div>
+
+    <!-- Banner URL -->
+    <div class="form-group">
+      <label for="banner">Banner URL (Optional)</label>
+      <input id="banner" formControlName="banner" class="form-control" type="text" placeholder="Enter image URL" />
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <ngx-editor formControlName="description"></ngx-editor>
+    </div>
+
+    <!-- Category -->
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" formControlName="category" class="form-control">
+        <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+      </select>
+    </div>
+
+    <!-- Created Date -->
+    <div class="form-group">
+      <label for="createdDate">Created Date</label>
+      <input id="createdDate" formControlName="createdDate" class="form-control" type="text" readonly />
+    </div>
+
+    <!-- Author -->
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input id="author" formControlName="author" class="form-control" type="text" readonly />
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons d-flex justify-content-between">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      <button type="button" class="btn btn-light" (click)="saveDraft()">Save Draft</button>
+      <button type="submit" class="btn btn-primary">Publish</button>
+    </div>
+  </form>
+</div>
