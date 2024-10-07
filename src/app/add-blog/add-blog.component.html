@@ -15,7 +15,9 @@
     <!-- Description -->
     <div class="form-group">
       <label for="description">Description</label>
-      <ngx-editor formControlName="description"></ngx-editor>
+      <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+      <!-- <ngx-editor [editor]="editor" [placeholder]="'Type here...'"></ngx-editor> -->
+      <ngx-editor [editor]="editor" formControlName="description"></ngx-editor>
     </div>
 
     <!-- Category -->

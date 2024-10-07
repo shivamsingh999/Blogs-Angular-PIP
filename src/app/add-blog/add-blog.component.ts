@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
+import { Editor } from 'ngx-editor'
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-blog',
@@ -11,6 +13,7 @@ import { NgxEditorModule } from 'ngx-editor';
     CommonModule,  // For *ngFor and other common directives
     ReactiveFormsModule,  // For reactive forms
     NgxEditorModule,  // For the ngx-editor
+    HttpClientModule,
   ],
   templateUrl: './add-blog.component.html',
   styleUrl: './add-blog.component.scss'
@@ -25,7 +28,12 @@ export class AddBlogComponent implements OnInit {
     // Add more categories here
   ];
 
-  constructor(private fb: FormBuilder) {}
+  editor: Editor;
+  // http: HttpClient;
+
+  constructor(private fb: FormBuilder,  private http: HttpClient) {
+    this.editor = new Editor();
+  }
 
   ngOnInit(): void {
     this.blogForm = this.fb.group({
@@ -36,6 +44,8 @@ export class AddBlogComponent implements OnInit {
       createdDate: [{ value: this.getCurrentDate(), disabled: true }],
       author: [{ value: this.getAuthorName(), disabled: true }]
     });
+
+    this.editor = new Editor();
   }
 
   getCurrentDate(): string {
@@ -59,6 +69,21 @@ export class AddBlogComponent implements OnInit {
     if (this.blogForm.valid) {
       const blogData = this.blogForm.getRawValue();
       // Handle publishing the blog
+      // Add publishing-specific logic, e.g., removing draft status
+      blogData.isPublished = true;
+
+      // Assuming `http://localhost:3000/blogs` is the endpoint for publishing
+      this.http.post('http://localhost:3000/blogs', blogData).subscribe({
+        next: (response: any) => {
+          console.log('Blog published successfully:', response);
+          // Optionally, navigate to another page or reset the form
+        },
+        error: (err: any) => {
+          console.error('Error publishing blog:', err);
+        }
+      });
+    } else {
+      console.error('Form is invalid, please check the fields.');
     }
   }
 }
