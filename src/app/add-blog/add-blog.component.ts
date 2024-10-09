@@ -31,7 +31,7 @@ export class AddBlogComponent implements OnInit {
   editor: Editor;
   // http: HttpClient;
 
-  constructor(private fb: FormBuilder,  private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.editor = new Editor();
   }
 
@@ -70,6 +70,8 @@ export class AddBlogComponent implements OnInit {
       const blogData = this.blogForm.getRawValue();
       // Handle publishing the blog
       // Add publishing-specific logic, e.g., removing draft status
+      // Clean the description: Strip <p> tags
+      blogData.description = this.stripParagraphTags(blogData.description);
       blogData.isPublished = true;
 
       // Assuming `http://localhost:3000/blogs` is the endpoint for publishing
@@ -85,5 +87,16 @@ export class AddBlogComponent implements OnInit {
     } else {
       console.error('Form is invalid, please check the fields.');
     }
+  }
+
+  // Helper function to strip <p> tags
+  stripParagraphTags(description: string): string {
+    // Replace closing </p> or <br> tags with a newline character
+    let formattedDescription = description.replace(/<\/p>/g, '\n').replace(/<br>/g, '\n');
+
+    // Remove opening <p> tags
+    formattedDescription = formattedDescription.replace(/\n/g, '<br>');
+
+    return formattedDescription.trim(); // Remove extra spaces or newlines
   }
 }
