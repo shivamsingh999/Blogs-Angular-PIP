@@ -60,10 +60,19 @@
 
    <!-- Categories Section -->
    <div class="col-12 mb-4">
-    <h3>Categories</h3>
+    <!-- <h3>Categories</h3>
     <div class="d-flex flex-wrap">
       <div *ngFor="let category of categories" class="p-2">
         <button class="btn btn-outline-dark" (click)="filterBlogsByCategory(category)">
+          {{ category }}
+        </button>
+      </div>
+    </div> -->
+    <div class="col-12 mb-4">
+      <h3>Categories</h3>
+      <div class="d-flex flex-wrap">
+        <button class="btn btn-outline-dark me-2" (click)="filterBlogsByCategory('all')">All</button>
+        <button *ngFor="let category of categories" class="btn btn-outline-dark me-2" (click)="filterBlogsByCategory(category)">
           {{ category }}
         </button>
       </div>
@@ -117,7 +126,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4" *ngFor="let blog of blogs">
+        <div class="col-md-4" *ngFor="let blog of filteredBlogs">
           <div class="card blog-card">
             <img class="card-img-top" [src]="blog.banner" alt="Blog Image">
             <div class="card-body">

@@ -27,38 +27,7 @@ header {
   }
 }
 
-// Blog card styles
-.blog-card {
-  background-color: $card-bg-color;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  padding: 20px;
-  margin-bottom: 20px;
 
-  .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  .card-text {
-    font-size: 1rem;
-    color: lighten($text-color, 20%);
-    margin-bottom: 20px;
-  }
-
-  .btn-primary {
-    background-color: $primary-color;
-    border: none;
-    border-radius: $border-radius;
-    padding: 10px 20px;
-    font-size: 1rem;
-
-    &:hover {
-      background-color: darken($primary-color, 10%);
-    }
-  }
-}
 
 // Categories
 .categories {
@@ -122,5 +91,46 @@ footer {
   p {
     margin: 0;
     font-size: 1rem;
+  }
+}
+.blog-card {
+  border: 1px solid #e1e1e1; /* Light border for the card */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Ensure content doesn't overflow */
+  transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
+
+  &:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+  }
+
+  img {
+    width: 100%; /* Full-width image */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .card-body {
+    padding: 20px;
+
+    .card-title {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 10px; /* Space below title */
+    }
+
+    .card-text {
+      font-size: 1rem;
+      color: #555; /* Text color */
+      margin-bottom: 15px; /* Space below text */
+    }
+
+    .btn {
+      background-color: #007bff; /* Bootstrap primary color */
+      color: #fff;
+
+      &:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+    }
   }
 }

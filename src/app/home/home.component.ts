@@ -12,9 +12,18 @@ import { RouterModule } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   blogs: any[] = [];
+  filteredBlogs: any[] = [];
   categories: string[] = ['Technology', 'Health', 'Lifestyle', 'Finance']; // Sample categories
+  
 
   constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.http.get<any[]>('http://localhost:3000/blogs').subscribe((data) => {
+      this.blogs = data;
+      this.filteredBlogs = [...this.blogs]; // Initially, show all blogs
+    });
+  }
 
   onSubscribe() {
     // Logic for subscription form submission
@@ -22,14 +31,13 @@ export class HomeComponent implements OnInit {
   }
 
 
-  filterBlogsByCategory(category: string) {
-    // Filter logic here
-    this.blogs = this.blogs.filter(blog => blog.category === category);
+  filterBlogsByCategory(category: string): void {
+    // debugger
+    if (category === 'all') {
+      this.filteredBlogs = [...this.blogs]; // Show all blogs if 'All' is selected
+    } else {
+      this.filteredBlogs = this.blogs.filter(blog => blog.category == category);
+    }
   }
 
-  ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:3000/blogs').subscribe((data) => {
-      this.blogs = data;
-    });
-  }
 }

@@ -25,6 +25,7 @@ export class AddBlogComponent implements OnInit {
     { id: 1, name: 'Technology' },
     { id: 2, name: 'Lifestyle' },
     { id: 3, name: 'Finance' },
+    { id: 4, name: 'Health' },
     // Add more categories here
   ];
 
