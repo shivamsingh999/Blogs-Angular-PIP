@@ -54,7 +54,8 @@
     <div class="container">
       <h1>Welcome to Blogsome</h1>
       <p>Sharing my thoughts and experiences with the world</p>
-      <button class="btn btn-light" [routerLink]="['/add-blog']">Get Started</button>
+      <!-- <button class="btn btn-light" [routerLink]="['/add-blog']" (click)="auth.loginWithRedirect()">Get Started</button> -->
+      <button class="btn btn-light" [routerLink]="['/auth-callback']">Get Started</button>
     </div>
   </section>
 

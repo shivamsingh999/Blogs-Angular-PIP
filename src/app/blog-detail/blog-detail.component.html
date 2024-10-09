@@ -16,7 +16,8 @@
         <p><strong>Created on:</strong> {{ blog.createdDate }}</p>
       </div>
       <div class="blog-description">
-        <p>{{ blog.description }}</p>
+        <!-- <p>{{ blog.description }}</p> -->
+        <div class="card-text" [innerHTML]="blog.description" style="white-space: pre-wrap;">blog.description</div>
       </div>
     </div>
   </div>
