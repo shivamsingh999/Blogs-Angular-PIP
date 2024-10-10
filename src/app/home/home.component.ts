@@ -26,6 +26,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  logout() {
+    this.auth.logout();
+  }
+
   onSubscribe() {
     // Logic for subscription form submission
     alert('You have subscribed successfully!');

@@ -6,6 +6,89 @@ $text-color: #333;
 $card-bg-color: #fff;
 $border-radius: 8px;
 $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f8f9fa;
+}
+
+.navbar {
+  background-color: #343a40;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.hero-section {
+  background: url('../../assets/images/blog-starter.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  // Create the dark overlay
+&::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); // Dark overlay with 50% opacity
+  z-index: 1; // Position the overlay below the text
+}
+.content {
+  position: relative;
+  z-index: 2; // Make sure the text is above the overlay
+  .content-header {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .content-sub-header {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+}
+}
+
+
+
+
+
+.hero-section h1 {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+
+
+
+
+.footer {
+  background-color: #343a40;
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+}
+
 
 // Global styles
 body {
@@ -93,44 +176,298 @@ footer {
     font-size: 1rem;
   }
 }
-.blog-card {
-  border: 1px solid #e1e1e1; /* Light border for the card */
-  border-radius: 8px; /* Rounded corners */
-  overflow: hidden; /* Ensure content doesn't overflow */
-  transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
 
+
+.btn-animated {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #f76b1c, #ffae00);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  outline: none;
+  z-index: 1;
+  overflow: hidden;
+
+  /* 3D effect on hover */
   &:hover {
-    transform: translateY(-5px); /* Lift effect */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+    transform: translateY(-5px) scale(1.0);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   }
 
-  img {
-    width: 100%; /* Full-width image */
-    height: auto; /* Maintain aspect ratio */
+  /* Before pseudo-element for extra flair */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    transition: all 0.5s ease;
+    z-index: -1;
   }
 
-  .card-body {
-    padding: 20px;
+  /* Animated gradient on hover */
+  &:hover::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-    .card-title {
-      font-size: 1.5rem;
-      color: #333;
-      margin-bottom: 10px; /* Space below title */
+  /* After pseudo-element for glow effect */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  /* Text hover effect */
+  span {
+    position: relative;
+    z-index: 2;
+  }
+
+  
+
+  /* Add a slight bounce when clicked */
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.navbar {
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #343a40;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #007bff;
     }
+  }
 
-    .card-text {
-      font-size: 1rem;
-      color: #555; /* Text color */
-      margin-bottom: 15px; /* Space below text */
+  .dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    color: #343a40;
+
+    &:hover {
+      color: #007bff;
     }
+  }
 
-    .btn {
-      background-color: #007bff; /* Bootstrap primary color */
-      color: #fff;
+  .dropdown-menu {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    .dropdown-item {
+      padding: 0.75rem 1.5rem;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
 
       &:hover {
-        background-color: #0056b3; /* Darker blue on hover */
+        background-color: #f8f9fa;
       }
+    }
+  }
+
+  .btn-light {
+    background-color: transparent;
+    border: none;
+
+    i {
+      font-size: 1.2rem;
+    }
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+
+  .btn-outline-dark {
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #343a40;
+      color: #fff;
+    }
+  }
+}
+
+.blog-section {
+  background-color: #f8f9fa; // Light gray background
+  padding: 60px 0;
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #343a40; // Dark text for contrast
+    margin-bottom: 2rem;
+  }
+
+  .dropdown {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-end;
+
+    .btn-outline-dark {
+      font-family: 'Montserrat', sans-serif;
+      border-color: #343a40;
+      color: #343a40;
+      background-color: transparent;
+      border-radius: 5px;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-outline-dark:hover {
+      background-color: #343a40;
+      color: #fff;
+    }
+
+    .dropdown-menu {
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-item {
+      font-family: 'Montserrat', sans-serif;
+      padding: 0.75rem 1.5rem;
+      color: #343a40;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #343a40;
+        color: #fff;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.75rem;
+    }
+
+    .dropdown {
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .dropdown .btn-outline-dark {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns layout */
+    gap: 20px;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: none;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-img-container {
+        height: 200px;
+        overflow: hidden;
+        border-radius: 10px 10px 0 0;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .card-body {
+        padding: 20px;
+        flex: 1;
+
+        .card-title {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          font-size: 1.25rem;
+          color: #343a40;
+          margin-bottom: 1rem;
+        }
+
+        .card-text {
+          font-size: 0.95rem;
+          color: #6c757d;
+          margin-bottom: 1rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 3; /* Limit to 3 lines */
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal;
+        }
+
+        .btn-primary {
+          background-color: #007bff;
+          border-color: #007bff;
+          border-radius: 5px;
+          transition: background-color 0.3s ease, border-color 0.3s ease;
+
+          &:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .row {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns layout for medium screens */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .row {
+      grid-template-columns: 1fr; /* 1 column layout for small screens */
     }
   }
 }

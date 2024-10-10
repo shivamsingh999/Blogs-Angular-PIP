@@ -6,52 +6,226 @@
     min-height: 80vh;
     padding: 20px;
     background-color: #f7f9fc;
-  
+
     form {
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 700px; // increased width for more content space
+        display: flex;
+        flex-direction: column;
+        gap: 2rem; // increased gap for better spacing
+        background-color: white;
+        padding: 30px; // more padding for a comfortable layout
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     }
-  
+
     .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        label {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        input,
+        select,
+        textarea,
+        .ngx-editor {
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+            font-size: 1rem;
+        }
     }
-  
-    .form-group label {
-      font-weight: bold;
-      color: #333;
+
+    // Specific styling for ngx-editor (description field)
+    ngx-editor {
+        overflow-y: auto; // allow scroll within the editor if content exceeds
+        border-radius: 4px;
+        background-color: #fdfdfd; // subtle background for editing
     }
-  
-    .form-group input, .form-group select, .form-group textarea {
-      padding: 10px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      width: 100%;
-      font-size: 1rem;
-    }
-  
-    .form-group ngx-editor {
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 10px;
-    }
-  
+
     .action-buttons {
-      display: flex;
-      justify-content: space-between;
-  
-      button {
-        flex: 1;
-        margin: 0 5px;
+        display: flex;
+        justify-content: space-between;
+      
+        .btn-secondary {
+          flex: 1;
+          margin: 0 5px;
+          padding: 10px 20px;
+          font-weight: bold;
+          border-radius: 5px;
+          position: relative;
+          overflow: hidden;
+          color: white;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.3s;
+          background: linear-gradient(270deg, #b63f47, #ff0000, #a00808); // Default gradient
+          background-size: 300% 300%;
+          
+          // Background gradient animation
+          &::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            bottom: -100px;
+            background: linear-gradient(270deg, #b63f47, #ff0000, #a00808);
+            background-size: 300% 300%;
+            animation: none; // No animation by default
+            filter: blur(10px);
+            z-index: -1;
+            transition: opacity 0.3s;
+          }
+      
+          // Hover effect
+          &:hover {
+            &::before {
+              animation: gradient-animation 5s linear infinite; // Start animation on hover
+              opacity: 1; // Full opacity on hover
+            }
+            transform: scale(1.05);
+            filter: brightness(1.1);
+          }
+      
+          &:focus {
+            outline: none;
+          }
+      
+          &:active {
+            transform: scale(0.95);
+          }
+        }
+      
+        .btn-primary {
+          flex: 1;
+          margin: 0 5px;
+          padding: 10px 20px;
+          font-weight: bold;
+          border-radius: 5px;
+          position: relative;
+          overflow: hidden;
+          color: white;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.3s;
+          background: linear-gradient(270deg, #0084ff, #68c8ff, #002fff); // Default gradient
+          background-size: 300% 300%;
+          
+          // Background gradient animation
+          &::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            bottom: -100px;
+            background: linear-gradient(270deg, #0084ff, #68c8ff, #002fff);
+            background-size: 300% 300%;
+            animation: none; // No animation by default
+            filter: blur(10px);
+            z-index: -1;
+            transition: opacity 0.3s;
+          }
+      
+          // Hover effect
+          &:hover {
+            &::before {
+              animation: gradient-animation 5s linear infinite; // Start animation on hover
+              opacity: 1; // Full opacity on hover
+            }
+            transform: scale(1.05);
+            filter: brightness(1.1);
+          }
+      
+          &:focus {
+            outline: none;
+          }
+      
+          &:active {
+            transform: scale(0.95);
+          }
+        }
+      
+        .btn-light {
+          flex: 1;
+          margin: 0 5px;
+          padding: 10px 20px;
+          font-weight: bold;
+          border-radius: 5px;
+          position: relative;
+          overflow: hidden;
+          color: white;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.3s;
+          background: linear-gradient(270deg, #242424, #d6d6d6, #818181); // Default gradient
+          background-size: 300% 300%;
+          
+          // Background gradient animation
+          &::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            bottom: -100px;
+            background: linear-gradient(270deg, #242424, #d6d6d6, #818181);
+            background-size: 300% 300%;
+            animation: none; // No animation by default
+            filter: blur(10px);
+            z-index: -1;
+            transition: opacity 0.3s;
+          }
+      
+          // Hover effect
+          &:hover {
+            &::before {
+              animation: gradient-animation 5s linear infinite; // Start animation on hover
+              opacity: 1; // Full opacity on hover
+            }
+            transform: scale(1.05);
+            filter: brightness(1.1);
+          }
+      
+          &:focus {
+            outline: none;
+          }
+      
+          &:active {
+            transform: scale(0.95);
+          }
+        }
       }
-    }
-  }
-  
+      
+      // Gradient animation keyframes
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 0%;
+          transform: rotate(0deg);
+        }
+      
+        50% {
+          background-position: 100% 100%;
+          transform: rotate(180deg);
+        }
+      
+        100% {
+          background-position: 0% 0%;
+          transform: rotate(360deg);
+        }
+      }
+      
+      
+
+}
+
+// .ProseMirror.NgxEditor__Content {
+//     height: 300px !important;
+// }
