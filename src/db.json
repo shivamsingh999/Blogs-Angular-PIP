@@ -128,7 +128,25 @@
       "category": "2",
       "createdDate": "2024-10-09T07:38:59.441Z",
       "author": "John Doe",
-      "isPublished": true
+      "isPublished": true,
+      "comments": [
+        {
+          "id": "c1",
+          "author": "FirstUser",
+          "text": "This is an amazing blog!",
+          "likes": 88,
+          "dislikes": 14,
+          "createdDate": "2024-10-12T09:20:00.000Z"
+        },
+        {
+          "id": "c2",
+          "author": "SecondUser",
+          "text": "Interesting perspective, I enjoyed reading this.",
+          "likes": 55,
+          "dislikes": 5,
+          "createdDate": "2024-10-12T09:50:00.000Z"
+        }
+      ]
     },
     {
       "id": "a259",
