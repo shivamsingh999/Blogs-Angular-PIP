@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
 import { Editor } from 'ngx-editor'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BlogService } from '../services/blog.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-blog',
@@ -30,13 +32,16 @@ export class AddBlogComponent implements OnInit {
   ];
 
   editor: Editor;
+  blogId!: string | null;
   // http: HttpClient;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private blogService: BlogService,  private route: ActivatedRoute,
+    private router: Router) {
     this.editor = new Editor();
   }
 
   ngOnInit(): void {
+    this.blogId = this.route.snapshot.paramMap.get('id');
     this.blogForm = this.fb.group({
       title: ['', [Validators.required]],
       banner: [''],
@@ -45,6 +50,11 @@ export class AddBlogComponent implements OnInit {
       createdDate: [{ value: this.getCurrentDate(), disabled: true }],
       author: [{ value: this.getAuthorName(), disabled: true }]
     });
+    if (this.blogId) {
+      this.blogService.getBlogById(this.blogId).subscribe(blog => {
+        this.blogForm.patchValue(blog);
+      });
+    }
 
     this.editor = new Editor();
   }
@@ -59,32 +69,76 @@ export class AddBlogComponent implements OnInit {
 
   cancel(): void {
     this.blogForm.reset();
+    this.blogForm = this.fb.group({
+      createdDate: [{ value: this.getCurrentDate(), disabled: true }],
+      author: [{ value: this.getAuthorName(), disabled: true }]
+    });
   }
 
-  saveDraft(): void {
-    const blogData = this.blogForm.getRawValue();
-    // Handle save as draft logic
-  }
 
   onSubmit(): void {
     if (this.blogForm.valid) {
       const blogData = this.blogForm.getRawValue();
-      // Handle publishing the blog
-      // Add publishing-specific logic, e.g., removing draft status
-      // Clean the description: Strip <p> tags
       blogData.description = this.stripParagraphTags(blogData.description);
       blogData.isPublished = true;
 
-      // Assuming `http://localhost:3000/blogs` is the endpoint for publishing
-      this.http.post('http://localhost:3000/blogs', blogData).subscribe({
-        next: (response: any) => {
-          console.log('Blog published successfully:', response);
-          // Optionally, navigate to another page or reset the form
-        },
-        error: (err: any) => {
-          console.error('Error publishing blog:', err);
-        }
-      });
+      if (this.blogId) {
+        // Update existing blog
+        this.blogService.updateBlog(this.blogId, blogData).subscribe({
+          next: (response) => {
+            console.log('Blog updated successfully:', response);
+            this.router.navigate(['/']); // Redirect after updating
+          },
+          error: (err) => {
+            console.error('Error updating blog:', err);
+          }
+        });
+      } else {
+        // Create new blog
+        this.blogService.addBlog(blogData).subscribe({
+          next: (response) => {
+            console.log('Blog published successfully:', response);
+            this.router.navigate(['/']); // Redirect after creating
+          },
+          error: (err) => {
+            console.error('Error publishing blog:', err);
+          }
+        });
+      }
+    } else {
+      console.error('Form is invalid, please check the fields.');
+    }
+  }
+
+  saveDraft(): void {
+    if (this.blogForm.valid) {
+      const draftData = this.blogForm.getRawValue();
+      draftData.description = this.stripParagraphTags(draftData.description);
+      draftData.isPublished = false; // Set to false for saving as a draft
+  
+      if (this.blogId) {
+        // Update existing draft
+        this.blogService.updateBlog(this.blogId, draftData).subscribe({
+          next: (response) => {
+            console.log('Draft updated successfully:', response);
+            this.router.navigate(['/']); // Redirect after updating
+          },
+          error: (err) => {
+            console.error('Error updating draft:', err);
+          }
+        });
+      } else {
+        // Create new draft
+        this.blogService.addBlog(draftData).subscribe({
+          next: (response) => {
+            console.log('Draft saved successfully:', response);
+            this.router.navigate(['/']); // Redirect after creating
+          },
+          error: (err) => {
+            console.error('Error saving draft:', err);
+          }
+        });
+      }
     } else {
       console.error('Form is invalid, please check the fields.');
     }

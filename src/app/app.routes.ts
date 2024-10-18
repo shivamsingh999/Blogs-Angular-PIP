@@ -16,6 +16,7 @@ export const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'my-blogs', component: MyBlogsComponent, canActivate: [AuthGuard] },
   // { path: 'add-blog', component: ManageBlogsComponent, canActivate: [AuthGuard] },
+  { path: 'add-blog/:id', component: AddBlogComponent },
   { path: 'add-blog', component: AddBlogComponent },
   { path: 'blog/:id', component: BlogDetailComponent },
   { path: 'auth-callback', component: AuthCallbackComponent },

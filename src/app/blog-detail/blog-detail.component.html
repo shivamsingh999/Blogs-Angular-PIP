@@ -1,12 +1,4 @@
-<!-- <div class="container mt-5">
-    <div class="blog-detail">
-      <img [src]="blog.banner" alt="Blog Image" class="img-fluid mb-4">
-      <h2>{{ blog.title }}</h2>
-      <p><strong>Author:</strong> {{ blog.author }}</p>
-      <p><strong>Created on:</strong> {{ blog.createdDate }}</p>
-      <p>{{ blog.description }}</p>
-    </div>
-  </div> -->
+
   <div class="container mt-5">
     <div class="blog-detail">
       <img [src]="blog.banner" alt="Blog Image" class="img-fluid mb-4">
@@ -22,48 +14,69 @@
     </div>
 
     <div class="comment-section">
-        <h3>Comments</h3>
-        <hr />
         
-        <!-- Add a comment -->
+        @defer (on viewport) {
+            <!-- This content will be lazily loaded -->
+            <!-- Sample Comments -->
+             <!-- Add a comment -->
+             <h3>Comments</h3>
+             <hr />
         <div class="card comment-card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Leave a comment</h5>
-            <hr />
-            <form>
-              <div class="form-group">
-                <textarea rows="3" class="form-control comment-input" placeholder="Enter your comment here..." style="resize: none;"></textarea>
-              </div>
-              <button type="submit" class="btn btn-outline-primary btn-block comment-btn">Comment</button>
-            </form>
+            <div class="card-body">
+              <h5 class="card-title">Leave a comment</h5>
+              <hr />
+              <form>
+                <div class="form-group">
+                  <textarea rows="3" class="form-control comment-input" placeholder="Enter your comment here..." style="resize: none;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-primary btn-block comment-btn">Comment</button>
+              </form>
+            </div>
           </div>
-        </div>
-      
-        <!-- Sample Comments -->
         <div class="card comment-card mb-3" *ngFor="let comment of comments">
-          <div class="card-body">
-            <h5 class="card-title">{{ comment.author }}</h5>
-            <p class="card-text">{{ comment.text }}</p>
-            <hr />
-            <ul class="card-text list-inline comment-actions">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="bi bi-hand-thumbs-up"></i> {{ comment.likes }}
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="bi bi-hand-thumbs-down"></i> {{ comment.dislikes }}
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="bi bi-flag"></i>
-                </a>
-              </li>
-            </ul>
+            <div class="card-body">
+              <h5 class="card-title">{{ comment.author }}</h5>
+              <p class="card-text">{{ comment.text }}</p>
+              <hr />
+              <ul class="card-text list-inline comment-actions">
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="bi bi-hand-thumbs-up"></i> {{ comment.likes }}
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="bi bi-hand-thumbs-down"></i> {{ comment.dislikes }}
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="bi bi-flag"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        
+            <!-- Placeholder to show before the hover interaction happens -->
+            
+        
+            
+          }
+          @placeholder (minimum 500ms) {
+              <p>Placeholder for comment section</p>
+            }
+          <!-- Loading spinner after the user hovers but before the calendar loads -->
+          @loading (after 100ms) {
+              <img alt="loading..." src="loading-spinner.gif" />
+            }
+        
+            <!-- Error message in case loading fails -->
+            @error {
+              <p>Failed to load the comments. Please try again later.</p>
+            }
+      
+        
       </div>
       
   </div>
