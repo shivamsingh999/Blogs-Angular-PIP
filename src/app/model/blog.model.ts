@@ -6,6 +6,8 @@ export interface Comment {
     likes: number;
     dislikes: number;
     createdDate: string; // Adjust the type if you want to use Date
+    replies?: Comment[];
+    showReply?: boolean;
 }
 
 export interface Blog {

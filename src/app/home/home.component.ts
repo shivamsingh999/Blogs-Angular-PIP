@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   blogs: Blog[] = []; // Initialize as null to handle the absence of data
   filteredBlogs: Blog[] = [];
   categories: string[] = ['Technology', 'Health', 'Lifestyle', 'Finance']; // Sample categories
+  viewMode: string = 'card';
 
 
   constructor(private http: HttpClient, public auth: AuthService, private blogService: BlogService, private router: Router) { }
@@ -33,6 +34,11 @@ export class HomeComponent implements OnInit {
   logout() {
     this.auth.logout();
   }
+
+  toggleView() {
+    this.viewMode = this.viewMode === 'card' ? 'list' : 'card';
+  }
+
 
   onSubscribe() {
     // Logic for subscription form submission

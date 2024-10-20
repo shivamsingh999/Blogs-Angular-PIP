@@ -3,7 +3,7 @@
     {
       "title": "vvv",
       "banner": "https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg",
-      "description": "<p>eyjsafcjvas<br><br><p><a href=\"https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg\" title=\"https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg\" target=\"_blank\">yatryar</a><br><br><p><img src=\"https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg\" alt=\"\" title=\"imagg\"><br><br>",
+      "description": "<p>eyjsafcjvas<br><br><p><a href=\"https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg\" title=\"https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg\" target=\"_blank\">yatryar</a><br><br><p><img src=\"https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg\" alt=\"\" title=\"imagg\" style=\"width: 100%;\"><br><br>",
       "category": "Lifestyle",
       "createdDate": "2024-10-09T07:38:59.441Z",
       "author": "John Doe",
@@ -13,12 +13,88 @@
     {
       "title": "shivamnhavee",
       "banner": "https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg",
-      "description": "<p>shivam<br><br><br><p><img src=\"https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg\" alt=\"shivam\" title=\"\"><br><br><br><br>",
+      "description": "<p>shivam<br><br><br><p><img src=\"https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg\" alt=\"shivam\" title=\"\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\" style=\"width: 100%;\"><br><br><br><br>",
       "category": "Lifestyle",
       "createdDate": "2024-10-18T06:47:44.990Z",
       "author": "John Doe",
       "isPublished": false,
-      "id": "c0ca"
+      "id": "c0ca",
+      "comments": [
+        {
+          "id": "y6847hwew",
+          "author": "Current User",
+          "text": "sdf",
+          "likes": 0,
+          "dislikes": 0,
+          "createdDate": "2024-10-20T11:36:25.304Z",
+          "replies": [],
+          "blogId": "c0ca",
+          "showReply": true
+        },
+        {
+          "id": "nvzqrk8h8",
+          "author": "Current User",
+          "text": "dfdffddf",
+          "likes": 0,
+          "dislikes": 0,
+          "createdDate": "2024-10-20T12:23:11.862Z",
+          "replies": [],
+          "blogId": "c0ca"
+        }
+      ]
+    },
+    {
+      "title": "qwrerqw",
+      "banner": "https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg",
+      "description": "<p>qwrqwr <img src=\"https://www.1rivet.com/wp-content/uploads/group-diverse-people-having-business-meeting.jpg\" alt=\"\" title=\"\" style=\"width: 100%;\"><br><br>",
+      "category": "Finance",
+      "createdDate": "2024-10-20T12:24:28.431Z",
+      "author": "John Doe",
+      "isPublished": true,
+      "id": "366e",
+      "comments": []
+    }
+  ],
+  "comments": [
+    {
+      "id": "y6847hwew",
+      "author": "Current User",
+      "text": "sdf",
+      "likes": 0,
+      "dislikes": 0,
+      "createdDate": "2024-10-20T11:36:25.304Z",
+      "replies": [],
+      "blogId": "0e96"
+    },
+    {
+      "id": "y6847hwew",
+      "author": "Current User",
+      "text": "sdf",
+      "likes": 0,
+      "dislikes": 0,
+      "createdDate": "2024-10-20T11:36:25.304Z",
+      "replies": [],
+      "blogId": "c0ca"
+    },
+    {
+      "id": "nvzqrk8h8",
+      "author": "Current User",
+      "text": "dfdffddf",
+      "likes": 0,
+      "dislikes": 0,
+      "createdDate": "2024-10-20T12:23:11.862Z",
+      "replies": [],
+      "blogId": "c0ca"
+    },
+    {
+      "id": "b4b1hua4q",
+      "author": "Current User",
+      "text": "sdegggggg",
+      "likes": 0,
+      "dislikes": 0,
+      "createdDate": "2024-10-20T12:25:18.719Z",
+      "replies": [],
+      "blogId": "366e"
     }
   ]
 }

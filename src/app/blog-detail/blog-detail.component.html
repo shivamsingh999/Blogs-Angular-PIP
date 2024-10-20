@@ -13,71 +13,79 @@
       </div>
     </div>
 
-    <div class="comment-section">
-        
-        @defer (on viewport) {
-            <!-- This content will be lazily loaded -->
-            <!-- Sample Comments -->
-             <!-- Add a comment -->
-             <h3>Comments</h3>
-             <hr />
-        <div class="card comment-card mb-3">
-            <div class="card-body">
-              <h5 class="card-title">Leave a comment</h5>
-              <hr />
-              <form>
-                <div class="form-group">
-                  <textarea rows="3" class="form-control comment-input" placeholder="Enter your comment here..." style="resize: none;"></textarea>
-                </div>
-                <button type="submit" class="btn btn-outline-primary btn-block comment-btn">Comment</button>
-              </form>
+    
+      <!-- Comments Section -->
+  <div class="comment-section">
+    @defer (on viewport) {
+      <h3>Comments</h3>
+      <hr />
+
+      <!-- Add a new comment -->
+      <div class="card comment-card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Leave a comment</h5>
+          <!-- <form (submit)="addComment()">
+            <div class="form-group">
+              <textarea [(ngModel)]="newComment" class="form-control comment-input" placeholder="Enter your comment here..." style="resize: none;" required></textarea>
             </div>
-          </div>
-        <div class="card comment-card mb-3" *ngFor="let comment of comments">
-            <div class="card-body">
-              <h5 class="card-title">{{ comment.author }}</h5>
-              <p class="card-text">{{ comment.text }}</p>
-              <hr />
-              <ul class="card-text list-inline comment-actions">
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="bi bi-hand-thumbs-up"></i> {{ comment.likes }}
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="bi bi-hand-thumbs-down"></i> {{ comment.dislikes }}
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="bi bi-flag"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        
-            <!-- Placeholder to show before the hover interaction happens -->
-            
-        
-            
-          }
-          @placeholder (minimum 500ms) {
-              <p>Placeholder for comment section</p>
-            }
-          <!-- Loading spinner after the user hovers but before the calendar loads -->
-          @loading (after 100ms) {
-              <img alt="loading..." src="loading-spinner.gif" />
-            }
-        
-            <!-- Error message in case loading fails -->
-            @error {
-              <p>Failed to load the comments. Please try again later.</p>
-            }
-      
-        
+            <button type="submit" class="btn btn-outline-primary btn-block comment-btn">Comment</button>
+          </form> -->
+          <form (submit)="addComment(replyText.value)">
+            <textarea #replyText rows="2" class="form-control" placeholder="Write your reply..."></textarea>
+            <button type="submit" class="btn btn-primary" (click)="updateBlogComments()">Reply</button>
+          </form>
+        </div>
       </div>
-      
+
+      <!-- Comments and Replies -->
+      <div *ngFor="let comment of comments">
+        <div class="card comment-card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ comment.author }}</h5>
+            <p class="card-text">{{ comment.text }}</p>
+            <hr />
+            <ul class="card-text list-inline comment-actions">
+              <li class="list-inline-item">
+                <a href="#"><i class="bi bi-hand-thumbs-up"></i> {{ comment.likes }}</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#"><i class="bi bi-hand-thumbs-down"></i> {{ comment.dislikes }}</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" (click)="toggleReply(comment.id)">Reply</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Replies -->
+          <div class="replies" *ngIf="comment.replies">
+            <div *ngFor="let reply of comment.replies" class="card reply-card mb-2">
+              <div class="card-body">
+                <h6 class="card-title">{{ reply.author }}</h6>
+                <p class="card-text">{{ reply.text }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reply Form -->
+          <div class="card reply-form mb-3" *ngIf="comment.showReply">
+            <form (submit)="addReply(comment.id, replyText.value)">
+              <textarea #replyText rows="2" class="form-control" placeholder="Write your reply..."></textarea>
+              <button type="submit" class="btn btn-primary" (click)="updateBlogComments()">Reply</button>
+            </form>
+          </div>
+          <button class="btn btn-link" (click)="toggleReplyForm(comment)">Reply</button>
+        </div>
+      </div>
+    }
+
+    @placeholder (minimum 500ms) {
+      <p>Loading comments...</p>
+    }
+
+    @error {
+      <p>Failed to load the comments. Please try again later.</p>
+    }
+  </div>
   </div>
   
